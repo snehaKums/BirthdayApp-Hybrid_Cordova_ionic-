@@ -1,14 +1,39 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="navColor">
+    <ion-title >
+      Birthday Remainder
     </ion-title>
+    <ion-fab  right top clear style="margin-top:-7px">
+ <button ion-fab mini  color="fabNavColor" (click)="navigateToViewBirthdays()"> <ion-icon name="list"></ion-icon></button>
+    </ion-fab>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+  <ion-grid>
+      <ion-row class="titleRow">
+          Welcome to Birthday App. Start filling joy with your loved Ones by wishing them on their birthday :)
+         </ion-row>
+<hr>
+    <ion-label name="fixed">Name: </ion-label>
+  <ion-input type="text" [(ngModel)]="name" placeholder="Enter friend name"></ion-input>
+  <!-- <ion-label name="fixed">Message: </ion-label>
+  <ion-input type="text" [(ngModel)]="message" placeholder="Enter Message"></ion-input> -->
+  <ion-label name="fixed">PhoneNumber: </ion-label>
+  <ion-input type="number" [(ngModel)]="number" placeholder="Enter PhoneNumber"></ion-input>
+  <ion-label name="fixed">DOB: </ion-label>
+  <ion-item>
+  <ion-datetime  [(ngModel)]="myDate" placeholder="Select date" displayFormat="MMMM/DD/YYYY" [(ngModel)]="myDate" [min]="today" [max]="future"></ion-datetime>
+  </ion-item>
+  <ion-label name="fixed">Time: </ion-label>
+  <ion-item>
+  <ion-datetime  [(ngModel)]="myTime" placeholder="Select time" displayFormat="hh:mm:ss:A" [(ngModel)]="myTime"></ion-datetime>
+  </ion-item>
+
+<hr>
+<hr>
+  <button ion-button color="navColor" *ngIf=" name && number && myDate && myTime" (click)="addBirthday(name,number,myDate,myTime)"  > 
+      Add Birthday 
+  </button>
+  </ion-grid>
+  </ion-content>
